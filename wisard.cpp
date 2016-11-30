@@ -365,8 +365,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         discr->tcounter++;
         wkey_t address;
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
-        //#
-        omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
