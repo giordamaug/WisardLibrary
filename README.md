@@ -8,9 +8,9 @@ A C++ implementation of the WiSARD weightless neural network.
 Description
 ----------------------
 
-WiSARD is a weightless neural network model of computation, introduced by 
+WiSARD stands for "Wilkie, Stonham, Aleksander Recognition Device". 
+It is a weightless neural network model to recognize binary patterns.
 For a introduction to WiSARD, please read <a href="https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2009-6.pdf">A brief introduction to Weightless Neural Systems</a>
-
 
 ----------------------
 Citation Details
