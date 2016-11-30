@@ -650,7 +650,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int neuron;
         wvalue_t retval;
         discr->tcounter++;
-//#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             //wram_decr_all_but_key(discr->rams[neuron],in_tuples[neuron] % discr->n_loc);
             retval = wram_decr_all_but_key(discr->rams[neuron],in_tuples[neuron],1,1);
@@ -684,7 +683,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int neuron;
         wvalue_t retval;
         discr->tcounter++;
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             //wram_decr_all_but_key(discr->rams[neuron],in_tuples[neuron] % discr->n_loc);
             retval = wram_decr_all_but_key_top(discr->rams[neuron],in_tuples[neuron],incr,decr,top);
@@ -708,7 +706,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         wkey_t address;
         wvalue_t retval;
         discr->tcounter++;
-//#pragma omp parallel for schedule(static,npixels/4) shared(img,discr,mypowers) private(n,neuron,address,I,J,val,retval)
         for (n=0;n<npixels;n++) {
             J = n % width + bx;
             I = n / width + by;
@@ -744,7 +741,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         wvalue_t retval;
         wkey_t key;
         discr->tcounter++;
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<n_ram;neuron++) {
             address=(wkey_t)0;
             // make ram key to be fired
@@ -780,7 +776,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         wvalue_t retval;
         wkey_t key;
         discr->tcounter++;
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<n_ram;neuron++) {
             address=(wkey_t)0;
             // make ram key to be fired
@@ -819,7 +814,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         wkey_t address;
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
         
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
@@ -871,7 +865,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         
         wkey_t address;
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0, sum=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
@@ -897,7 +890,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         wkey_t address;
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
         
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
@@ -924,7 +916,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
         int c1, c2, cursor, xr;
 
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0, sum=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
@@ -960,7 +951,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
         int c1, c2, cursor, xr;
         
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
@@ -996,7 +986,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
         int c1, c2, cursor, xr;
         
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0, sum=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
@@ -1029,7 +1018,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int val;
         wkey_t address;
         wkey_t key;
-        //#pragma omp parallel for schedule(img,discr,mypowers) shared(in_tuples) private(neuron,sum,address,val)
         for (neuron=0,sum=0;neuron<n_ram;neuron++) {
             address=(wkey_t)0;
             // make ram key to be fired
@@ -1063,7 +1051,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int val;
         wkey_t address;
         wkey_t key;
-        //#pragma omp parallel for schedule(img,discr,mypowers) shared(in_tuples) private(neuron,sum,address,val)
         for (neuron=0,sum=0;neuron<n_ram;neuron++) {
             address=(wkey_t)0;
             // make ram key to be fired
@@ -1095,7 +1082,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int I, J, val;
         wkey_t address;
         
-//#pragma omp parallel for schedule(static,npixels/4) shared(img,omg,discr,mypowers) private(n,neuron,sum,address,I,J,val)
         for (n=0;n<npixels;n++) {
             J = n % width + bx;
             I = n / width + by;
@@ -1124,7 +1110,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         int neuron, sum;
         
         for (neuron=0, sum=0;neuron<discr->n_ram;neuron++) {
-            //if (wram_get(discr->rams[neuron],in_tuples[neuron] % discr->n_loc) > threshold) {
             if (wram_get(discr->rams[neuron],in_tuples[neuron]) > threshold) {
                 sum++;
             }
@@ -1138,7 +1123,6 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         wkey_t address;
         int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
         
-        //#pragma omp parallel for schedule(static) shared(in_tuples) private(neuron)
         for (neuron=0;neuron<discr->n_ram;neuron++) {
             // compute neuron simulus
             address=(wkey_t)0;
