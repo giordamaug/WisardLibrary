@@ -49,7 +49,7 @@ either version 3 of the License or (at your option) any later version.
 A copy of the GPL license is provided in the "GPL.txt" file.
 
 ----------------------
-Compile/Run BEWiS source (Linux, Mac OSX)
+Compile source (Linux, Mac OSX)
 ----------------------
 
 To run the code the following libraries are required:
