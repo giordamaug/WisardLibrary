@@ -801,7 +801,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
     wvalue_t *responseDiscr(discr_t *discr, wkey_t *in_tuples) {
         int neuron, sum;
         
-        wvalue_t *res = malloc(discr->n_ram * wvalue_t);
+        wvalue_t *res = malloc(discr->n_ram * sizeof(wvalue_t));
         for (neuron=0, sum=0;neuron<discr->n_ram;neuron++) {
             //if (wram_get(discr->rams[neuron],in_tuples[neuron] % discr->n_loc) > 0) {
             res[neuron] = wram_get(discr->rams[neuron],in_tuples[neuron]);
