@@ -65,10 +65,10 @@ To run the code the following libraries are required:
 
 3. C++ Compiler (tested only with GCC 5.x or later versions)
 
-<code>
+```
 $ cmake .
 $ make
-</code>
+```
 
 ----------------------
 WiSARD in Python
@@ -76,7 +76,7 @@ WiSARD in Python
 
 To use WiSARD in your Python scripts:
 
-<code>
+```
 from wisard import *
 
 X = np.array(
@@ -100,4 +100,4 @@ result = w.predict(X)
 # classify by enabling bleaching
 w.setBleaching()
 result_b = w.predict(X)
-</code>
+```
