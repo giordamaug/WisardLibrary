@@ -12,7 +12,7 @@ class WiSARD:
 
     def __init__(self,
                  nobits,
-                 bleaching=True,
+                 bleaching=False,
                  default_bleaching=1,
                  confidence_bleaching=0.1,
                  randomized=True,
