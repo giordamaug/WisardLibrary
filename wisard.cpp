@@ -797,7 +797,19 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         // store responses
         return (double)sum/(double)discr->n_ram;
     }
-    
+
+    wvalue_t *responseDiscr(discr_t *discr, wkey_t *in_tuples) {
+        int neuron, sum;
+        
+        wvalue_t *res = malloc(discr->n_ram * wvalue_t);
+        for (neuron=0, sum=0;neuron<discr->n_ram;neuron++) {
+            //if (wram_get(discr->rams[neuron],in_tuples[neuron] % discr->n_loc) > 0) {
+            res[neuron] = wram_get(discr->rams[neuron],in_tuples[neuron]);
+        }
+        // store responses
+        return res;
+    }
+
     double classifySvmHistoDiscr(discr_t *discr, double *data, double *den, double *off, int nt, int nattr) {
         int neuron, sum=0;
         wkey_t address;
