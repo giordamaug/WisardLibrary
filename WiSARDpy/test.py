@@ -17,7 +17,9 @@ w = WiSARD(2,bleaching=False)
 w.fit(X, y)
 
 # classify
-w.predict(X)
+result = w.predict(X)
 # classify by enabling bleaching
 w.setBleaching()
-w.predict(X)
+result_b = w.predict(X)
+
+print result,result_b 
