@@ -18,7 +18,7 @@ elif platform.system() == 'Darwin':
 else:
     raise Error("Unsupported Platform")
 
-libpath = "libwisard-cxx_3.0" + suffix
+libpath = "../libwisard-cxx_3.0" + suffix
 wizl = CDLL(os.path.join(os.environ['PWD'], libpath))
 HEADKEY = 18446744073709551615L
 
