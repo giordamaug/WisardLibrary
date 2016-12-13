@@ -79,6 +79,7 @@ To use WiSARD in your Python scripts:
 ```
 from wisard import *
 
+# dataset is list of list, or 2-dimensional numpy array
 X = np.array(
    [ [0, 1, 0, 0, 0, 0, 0, 0],
      [0, 0, 1, 1, 1, 1, 0, 0],
@@ -89,13 +90,15 @@ X = np.array(
      [0, 0, 0, 0, 1, 0, 0, 1],
      [1, 0, 0, 0, 0, 0, 0, 1]])
 
+# label set is a list, or a numpy array
 y = np.array(['A','A','B','B','A','A','B','A',])
 
-w = WiSARD(2,bleaching=False)
-# train
+# create wisard object (with 2 bit resolution)
+w = WiSARD(2)
+# create/train the wisard object
 w.fit(X, y)
 
-# classify
+# classify by wisard
 result = w.predict(X)
 # classify by enabling bleaching
 w.setBleaching()
