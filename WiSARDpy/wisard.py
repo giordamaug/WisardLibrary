@@ -140,12 +140,10 @@ class WiSARD:
         
         res_disc = np.array([wisapi.responseDiscr(self._discriminators[class_name],self._mkTuple(self._discriminators[class_name],x)) for class_name in self._classes])
         
-        print res_disc
         while confidence < self._conf_bleaching:
             result_partial = np.sum(res_disc >= b, axis=1)
             confidence = self._calc_confidence(result_partial)
             b += 1
-            print result_partial, b, confidence
             if(np.sum(result_partial) == 0):
                 result_partial = np.sum(res_disc >= 1, axis=1)
                 break
