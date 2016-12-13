@@ -12,6 +12,13 @@ WiSARD stands for "Wilkie, Stonham, Aleksander Recognition Device".
 It is a weightless neural network model to recognize binary patterns.
 For a introduction to WiSARD, please read <a href="https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2009-6.pdf">A brief introduction to Weightless Neural Systems</a>
 
+This software is an efficient C++ library implementation of WiSARD
+basic components and functions. It can be used in any C++ application.
+
+The C++ WiSARD library is distributed together with a Python interface,
+called WiSARDpy, to use WiSARD in Python programming with 
+fast training/classification time.
+
 ----------------------
 Citation Details
 ----------------------
@@ -58,7 +65,39 @@ To run the code the following libraries are required:
 
 3. C++ Compiler (tested only with GCC 5.x or later versions)
 
-```
+<code>
 $ cmake .
 $ make
-```
+</code>
+
+----------------------
+WiSARD in Python
+----------------------
+
+To use WiSARD in your Python scripts:
+
+<code>
+from wisard import *
+
+X = np.array(
+   [ [0, 1, 0, 0, 0, 0, 0, 0],
+     [0, 0, 1, 1, 1, 1, 0, 0],
+     [0, 0, 1, 0, 0, 0, 1, 0],
+     [1, 0, 0, 0, 0, 0, 0, 1],
+     [1, 1, 0, 1, 1, 1, 1, 1],
+     [1, 0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 1, 0, 0, 1],
+     [1, 0, 0, 0, 0, 0, 0, 1]])
+
+y = np.array(['A','A','B','B','A','A','B','A',])
+
+w = WiSARD(2,bleaching=False)
+# train
+w.fit(X, y)
+
+# classify
+result = w.predict(X)
+# classify by enabling bleaching
+w.setBleaching()
+result_b = w.predict(X)
+</code>
