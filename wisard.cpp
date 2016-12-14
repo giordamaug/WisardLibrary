@@ -4,7 +4,7 @@
 //
 //  Created by Maurizio Giordano on 20/03/2014
 //
-// the WISARD C++ implementation for background extraction
+// the WISARD C++ implementation
 //
 
 #include <time.h>
