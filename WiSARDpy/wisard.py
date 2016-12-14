@@ -153,22 +153,21 @@ class WiSARD:
         return result
 
     def _calc_confidence(self, results):
-        # getting max value
+        # get max value
         max_value = results.max()
-        if(max_value == 0):
+        if(max_value == 0):  # if max is null confidence will be 0
             return 0
 
-        # if there are two positions with same value
+        # if there are two max values, confidence will be 0
         position = np.where(results == max_value)
         if position[0].shape[0]>1:
             return 0
 
-        # getting second max value
-        second_max = results[results < max_value].max()
+        # get second max value
         if results[results < max_value].size > 0:
             second_max = results[results < max_value].max()
         
-        # calculating confidence value
+        # calculating new confidence value
         c = 1 - float(second_max) / float(max_value)
         
         return c
