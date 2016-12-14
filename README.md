@@ -74,8 +74,16 @@ $ make
 WiSARD in C++
 ----------------------
 
-An example of usage of WiSARD library in your C++ programs is the following
-simple code:
+An example of usage of WiSARD library in your C++ programs is the program
+<code>test.cpp</code> which is compiled with the library and can be run by typing:
+
+```
+$ test
+```
+
+The source code of program <code>test.cpp</code> is hereafter reported as an example of
+use of WiSARD in C++ programming:
+
 
 ```
 #include "wisard.hpp"
