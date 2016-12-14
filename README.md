@@ -74,7 +74,14 @@ $ make
 WiSARD in Python
 ----------------------
 
-To use WiSARD in your Python scripts:
+To use WiSARD in your Python scripts you need to have
+python 2.7 (or later) installed on your system, plus the following
+modules:
+1) Numpy
+2) Ctools
+
+Once you have set the python programming framework, you can use the following simple
+script to start using WiSARD.
 
 ```
 from wisard import *
