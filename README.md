@@ -191,5 +191,5 @@ software distribution, which. Both implementations refer to the work:
 
 Danilo S. Carvalho, Hugo C. C. Carneiro, Felipe M. G. Franca, Priscila M. V. Lima.
 "B-bleaching: Agile Overtraining Avoidance in the WiSARD Weightless Neural Classifier"
-In: Proceedings of 21st European Symposium on Artificial Neural Networks, ISBN 978-2-87419-081-0. 
+In: Proceedings of 21st European Symposium on Artificial Neural Networks (ESANN 2013) - ISBN 978-2-87419-081-0. 
 Available from http://www.i6doc.com/en/livre/?GCOI=28001100131010.
