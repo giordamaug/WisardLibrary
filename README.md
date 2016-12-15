@@ -153,7 +153,7 @@ modules:
 2. Ctools
 
 Once you have set the python programming framework, you can use the following simple
-script to start using WiSARD.
+script to start using WiSARD (that can be found in folder WiSARDpy).
 
 ```
 from wisard import *
@@ -183,3 +183,13 @@ result = w.predict(X)
 w.setBleaching()
 result_b = w.predict(X)
 ```
+
+Note that the bleaching implementation of the WiSARD is included in the python wrapper 
+of our WiSARD Library, not in the library itself. 
+This implementation is very similar to the one implemented in the https://github.com/firmino/PyWANN 
+software distribution, which. Both implementations refer to the work:
+
+Danilo S. Carvalho, Hugo C. C. Carneiro, Felipe M. G. Franca, Priscila M. V. Lima.
+"B-bleaching: Agile Overtraining Avoidance in the WiSARD Weightless Neural Classifier"
+In: Proceedings of 21st European Symposium on Artificial Neural Networks, ISBN 978-2-87419-081-0. 
+Available from http://www.i6doc.com/en/livre/?GCOI=28001100131010.
