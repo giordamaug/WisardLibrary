@@ -836,6 +836,32 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         return (double)sum/(double)discr->n_ram;
     }
 
+    wvalue_t *responseSvmHistoDiscr(discr_t *discr, double *data, double *den, double *off, int nt, int nattr) {
+        int neuron, sum=0;
+        wkey_t address;
+        int x, i, index, npixels=nt * nattr, n_bit = discr->n_bit, value;
+        
+        wvalue_t *res;
+        res = (wvalue_t *)malloc(discr->n_ram * sizeof(wvalue_t));
+        for (neuron=0;neuron<discr->n_ram;neuron++) {
+            // compute neuron simulus
+            address=(wkey_t)0;
+            // decompose record data values into wisard input
+            for (i=0;i<n_bit;i++) {
+                x = discr->map[((neuron * n_bit) + i) % npixels];
+                index = x/nt;
+                value = (int) ((data[index] - off[index]) * nt / den[index]);
+                if ((x % nt) < value) {
+                    address |= (wkey_t)mypowers[n_bit -1 - i];
+                }
+            }
+            // store responses
+            res[neuron] = wram_get(discr->rams[neuron],address);
+        }
+        // return response array
+        return res;
+    }
+
     double classifySvmHistoDiscrThresholded(discr_t *discr, double *data, double *den, double *off, int nt, int nattr, double threshold) {
         int neuron, sum=0;
         wkey_t address;
