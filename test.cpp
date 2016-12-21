@@ -41,8 +41,8 @@ int main() {
     
     // init WiSARD (create discriminator for each class "A" and "B")
     discr_t wisard[2];
-    wisard[0] = *makeDiscr(2,8,"A","random");
-    wisard[1] = *makeDiscr(2,8,"B","random");
+    wisard[0] = *makeDiscr(2,8,"A","random",0);
+    wisard[1] = *makeDiscr(2,8,"B","random",0);
 
     // train WiSARD
     for (s=0; s < 8; s++)
