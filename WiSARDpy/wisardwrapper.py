@@ -121,10 +121,10 @@ def showRam(ram):
 """ Constructor interface """
 _makeDiscr =  wizl.makeDiscr
 _makeDiscr.restype =  POINTER(Discr)
-_makeDiscr.argtypes = [ c_int, c_int, c_char_p, c_char_p ]
+_makeDiscr.argtypes = [ c_int, c_int, c_char_p, c_char_p, c_int ]
 
-def makeDiscr(nbit, size, name='anonym', maptype='random'):
-    return _makeDiscr(c_int(nbit), c_int(size), c_char_p(name), c_char_p(maptype))
+def makeDiscr(nbit, size, name='anonym', maptype='random', seed=0):
+    return _makeDiscr(c_int(nbit), c_int(size), c_char_p(name), c_char_p(maptype), c_int(seed))
 
 """ Train/Classify wrappers"""
 _trainDiscr = wizl.trainDiscr

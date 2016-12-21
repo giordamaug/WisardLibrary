@@ -16,7 +16,7 @@ class WiSARD:
                  default_bleaching=1,
                  confidence_bleaching=0.1,
                  randomized=True,
-                 seed=424242):
+                 seed=0):
         if (not isinstance(nobits, int)):
             raise Exception('number of bits must be an integer')
         if (not isinstance(bleaching, bool)):
@@ -95,7 +95,7 @@ class WiSARD:
             d = wisapi.makeDiscr(self._nobits,
                                  self._retina_size,
                                  name=str(clname),
-                                 maptype = 'random' if self._randomized else 'linear')
+                                 maptype = 'random' if self._randomized else 'linear', seed=self._seed)
                               
             self._discriminators[str(clname)] = d
         
