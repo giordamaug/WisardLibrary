@@ -164,6 +164,7 @@ class WiSARD:
             return 0
 
         # get second max value
+        second_max = results[results < max_value].max()
         if results[results < max_value].size > 0:
             second_max = results[results < max_value].max()
         
