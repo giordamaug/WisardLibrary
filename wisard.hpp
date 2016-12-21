@@ -68,11 +68,11 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
      \param mode retina creation mode (linear, random).
      \return a pointer to the discriminator data structure
      */
-    discr_t *makeDiscr(int n_bit, int size, char *name, char *mode);
-    discr_t *makeTrainImgDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics);
-    discr_t *makeTrainImgBinDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols);
-    discrarray_t *makeDiscrArray(int n_bit, int size, char *name, char *mode, int tics);
-    discrarray_t *makeTrainImgDiscrArray(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics);
+    discr_t *makeDiscr(int n_bit, int size, char *name, char *mode, unsigned int seed);
+    discr_t *makeTrainImgDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics, unsigned int seed);
+    discr_t *makeTrainImgBinDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, unsigned int seed);
+    discrarray_t *makeDiscrArray(int n_bit, int size, char *name, char *mode, int tics, unsigned int seed);
+    discrarray_t *makeTrainImgDiscrArray(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics, unsigned int seed);
     
     //! discriminator copying function.
     /*!
