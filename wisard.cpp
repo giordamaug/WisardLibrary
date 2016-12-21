@@ -6,7 +6,6 @@
 //
 // the WISARD C++ implementation
 //
-
 #include <time.h>
 #include <math.h>
 #include <stdlib.h>
@@ -43,10 +42,10 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         }
     }
     
-    int **mapping(int size, char *mode) {
+    int **mapping(int size, char *mode, unsigned int seed) {
         register int i;
         int **maps;
-        srand (time(NULL));
+        if (seed>0) srand (seed); else srand (time(NULL));
         maps = (int **)malloc(2 * sizeof(int *));
         int *list = (int *)malloc(size * sizeof(int));
         // revers mapping (not necessary yet!)
@@ -88,8 +87,8 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
             throw std::invalid_argument( "received wrong mapping mode" );
         }
     }
-    
-    discr_t *makeDiscr(int n_bit, int size, char *name, char *mode) {
+   
+    discr_t *makeDiscr(int n_bit, int size, char *name, char *mode, unsigned int seed) {
         int i;
         discr_t *p = (discr_t *)malloc(sizeof(discr_t));
         int **maps;
@@ -109,7 +108,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         p->n_ram = (int)(size / n_bit);
         else
         p->n_ram = (int)(size / n_bit) + 1;
-        maps = (int **)mapping(size, mode);
+        maps = (int **)mapping(size, mode ,seed);
         p->map = maps[0];
         p->rmap = maps[1];
         p->rams = (wentry_t **)malloc(p->n_ram * sizeof(wentry_t *));
@@ -123,7 +122,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
     }
     
     // works on grey level images
-    discr_t *makeTrainImgDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics) {
+    discr_t *makeTrainImgDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics, unsigned int seed) {
         discr_t *p = (discr_t *)malloc(sizeof(discr_t));
         int **maps, i, neuron;
         wkeymax_t *newpk;
@@ -148,7 +147,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         for (i=0; i<size;i++) { p->mi[i] = (wvalue_t) 0; }
         if (size % n_bit == 0) p->n_ram = (int)(size / n_bit);
         else p->n_ram = (int)(size / n_bit) + 1;
-        maps = (int **)mapping(size, mode);
+        maps = (int **)mapping(size, mode, seed);
         p->map = maps[0];
         p->rmap = maps[1];
         p->rams = (wentry_t **)malloc(p->n_ram * sizeof(wentry_t *));
@@ -177,7 +176,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
     }
 
     // works on binay images
-    discr_t *makeTrainImgBinDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols) {
+    discr_t *makeTrainImgBinDiscr(int n_bit, int size, char *name, char *mode, const void * imgv, int cols, unsigned int seed) {
         discr_t *p = (discr_t *)malloc(sizeof(discr_t));
         int **maps, i, neuron;
         wkeymax_t *newpk;
@@ -200,7 +199,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         for (i=0; i<size;i++) { p->mi[i] = (wvalue_t) 0; }
         if (size % n_bit == 0) p->n_ram = (int)(size / n_bit);
         else p->n_ram = (int)(size / n_bit) + 1;
-        maps = (int **)mapping(size, mode);
+        maps = (int **)mapping(size, mode,seed);
         p->map = maps[0];
         p->rmap = maps[1];
         p->rams = (wentry_t **)malloc(p->n_ram * sizeof(wentry_t *));
@@ -225,7 +224,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         return p;
     }
 
-    discrarray_t *makeDiscrArray(int n_bit, int npixels, char *name, char *mode, int tics) {
+    discrarray_t *makeDiscrArray(int n_bit, int npixels, char *name, char *mode, int tics, unsigned int seed) {
         discrarray_t *p = (discrarray_t *)malloc(sizeof(discrarray_t));
         int **maps, i, neuron, n;
         wkeymax_t *newpk;
@@ -246,7 +245,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         p->maxkeys = (wkeymax_t **)malloc(npixels * sizeof(wkeymax_t *));
         if (tics % n_bit == 0) p->n_ram = (int)(tics / n_bit);
         else p->n_ram = (int)(tics / n_bit) + 1;
-        maps = (int **)mapping(tics, mode);
+        maps = (int **)mapping(tics, mode,seed);
         p->map = maps[0];
         p->rmap = maps[1];
         for (n=0; n<npixels; n++) {
@@ -261,7 +260,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         return p;
     }
 
-    discrarray_t *makeTrainImgDiscrArray(int n_bit, int npixels, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics) {
+    discrarray_t *makeTrainImgDiscrArray(int n_bit, int npixels, char *name, char *mode, const void * imgv, int cols, int bx, int by, int width, int tics, unsigned int seed) {
         discrarray_t *p = (discrarray_t *)malloc(sizeof(discrarray_t));
         int **maps, i, neuron,n;
         wkeymax_t *newpk;
@@ -287,7 +286,7 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
         p->maxkeys = (wkeymax_t **)malloc(npixels * sizeof(wkeymax_t *));
         if (tics % n_bit == 0) p->n_ram = (int)(tics / n_bit);
         else p->n_ram = (int)(tics / n_bit) + 1;
-        maps = (int **)mapping(tics, mode);
+        maps = (int **)mapping(tics, mode, seed);
         p->map = maps[0];
         p->rmap = maps[1];
         for (n=0; n<npixels; n++) {
