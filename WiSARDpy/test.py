@@ -12,15 +12,12 @@ X = np.array(
 
 y = np.array(['A','A','B','B','A','A','B','A',])
 
-w = WiSARD(2,bleaching=False,seed=424242)
+w = WiSARD(2,bleaching=False,seed=424242)  # set seed 0 (or skip it) for nondeterminism
 # train
 w.fit(X, y)
 
 # classify
-result = w.predict_proba(X)
+print w.predict_proba(X), w.predict(X)
 # classify by enabling bleaching
 w.setBleaching()
-result_b = w.predict_proba(X)
-
-print result
-print result_b
+print w.predict_proba(X), w.predict(X)
