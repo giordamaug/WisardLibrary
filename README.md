@@ -85,7 +85,7 @@ The source code of program <code>test.cpp</code> is hereafter reported as an exa
 use of WiSARD in C++ programming:
 
 
-```
+```cpp
 #include "wisard.hpp"
 #include <iostream>
 #include <string>
