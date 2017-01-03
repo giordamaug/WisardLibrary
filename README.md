@@ -155,7 +155,7 @@ modules:
 Once you have set the python programming framework, you can use the following simple
 script to start using WiSARD (that can be found in folder WiSARDpy).
 
-```
+```python
 from wisard import *
 
 # dataset is list of list, or 2-dimensional numpy array
